@@ -145,7 +145,7 @@ export const initializeSocket = (httpServer: HTTPServer): SocketIOServer => {
   // Note: For multi-instance deployments, configure Redis adapter:
   // io.adapter(createAdapter(pubClient, subClient))
 
-  logger.info('✅ Socket.IO server initialized');
+  logger.info('Socket.IO server initialized');
   return io;
 };
 
