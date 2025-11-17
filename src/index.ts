@@ -88,16 +88,16 @@ const startServer = async (): Promise<void> => {
 
     // Start HTTP server
     httpServer.listen(PORT, () => {
-      logger.info(`🚀 CollabSpace server is running on port ${PORT}`);
-      logger.info(`📡 Socket.IO server initialized`);
-      logger.info(`🌍 Environment: ${process.env.NODE_ENV || "development"}`);
-      logger.info(`🔗 Client URL: ${CLIENT_URL}`);
+      logger.info(`CollabSpace server is running on port ${PORT}`);
+      logger.info(`Socket.IO server initialized`);
+      logger.info(`Environment: ${process.env.NODE_ENV || "development"}`);
+      logger.info(`Client URL: ${CLIENT_URL}`);
 
       // Log service status
       logServiceStatus();
     });
   } catch (error) {
-    logger.error("❌ Failed to start server:", error);
+    logger.error("Failed to start server:", error);
     process.exit(1);
   }
 };
@@ -109,21 +109,21 @@ const handleShutdown = async (signal: string): Promise<void> => {
   try {
     // Close HTTP server
     httpServer.close(() => {
-      logger.info("🔌 HTTP server closed");
+      logger.info("HTTP server closed");
     });
 
     // Close Socket.IO server
     io.close(() => {
-      logger.info("🔌 Socket.IO server closed");
+      logger.info("Socket.IO server closed");
     });
 
     // Close database connections
     await gracefulShutdown();
 
-    logger.info("✅ Graceful shutdown completed");
+    logger.info("Graceful shutdown completed");
     process.exit(0);
   } catch (error) {
-    logger.error("❌ Error during graceful shutdown:", error);
+    logger.error("Error during graceful shutdown:", error);
     process.exit(1);
   }
 };
@@ -134,7 +134,7 @@ process.on("SIGINT", () => handleShutdown("SIGINT"));
 
 // Handle uncaught exceptions
 process.on("uncaughtException", (error: Error) => {
-  logger.error("❌ Uncaught Exception:", error);
+  logger.error("Uncaught Exception:", error);
   logger.error("Stack trace:", error.stack);
   // Don't exit immediately, allow graceful shutdown
   handleShutdown("UNCAUGHT_EXCEPTION");
@@ -142,7 +142,7 @@ process.on("uncaughtException", (error: Error) => {
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (reason: any, promise: Promise<any>) => {
-  logger.error("❌ Unhandled Rejection at:", promise, "reason:", reason);
+  logger.error("Unhandled Rejection at:", promise, "reason:", reason);
   // For development, don't exit on unhandled rejections - just log them
   if (process.env.NODE_ENV === "development") {
     logger.warn("Development mode: continuing after unhandled rejection");
