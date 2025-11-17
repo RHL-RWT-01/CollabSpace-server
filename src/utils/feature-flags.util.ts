@@ -58,13 +58,13 @@ export const createMockResponse = (service: string, action: string) => ({
 
 // Logging helper
 export const logServiceStatus = (): void => {
-  console.log("\n🚀 Service Status:");
+  console.log("\nService Status:");
   console.log(
-    `  💳 Payments: ${isPaymentsEnabled() ? "✅ Enabled" : "❌ Disabled"}`
+    `Payments: ${isPaymentsEnabled() ? "Enabled" : "Disabled"}`
   );
-  console.log(`  📧 Email: ${isEmailEnabled() ? "✅ Enabled" : "❌ Disabled"}`);
-  console.log(`  🤖 AI: ${isAIEnabled() ? "✅ Enabled" : "❌ Disabled"}`);
+  console.log(` Email: ${isEmailEnabled() ? "Enabled" : "Disabled"}`);
+  console.log(`AI: ${isAIEnabled() ? "Enabled" : "Disabled"}`);
   console.log(
-    `  💾 Storage: ${isStorageEnabled() ? "✅ Enabled" : "❌ Disabled"}\n`
+    `Storage: ${isStorageEnabled() ? "Enabled" : "Disabled"}\n`
   );
 };
