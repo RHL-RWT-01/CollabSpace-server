@@ -165,7 +165,7 @@ export const sendEmail = async (emailData: EmailData): Promise<void> => {
   try {
     // Check if email service is enabled
     if (!isEmailEnabled()) {
-      logger.info("📧 Email service disabled - Mock email sent:", {
+      logger.info("Email service disabled - Mock email sent:", {
         to: emailData.to,
         subject: emailData.subject,
         template: emailData.template,
